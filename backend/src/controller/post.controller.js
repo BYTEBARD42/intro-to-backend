@@ -44,7 +44,7 @@ const updatePost = async(req,res)=>{
 
         if(!updatedpost) return res.status(404).json({message:"post not found"});
 
-        res.status(200).json({message:"post updated", post: updatedpost});
+        res.status(200).json({message:"post updated"});
     } catch (error) {
         res.status(500).json({message:"Internal server error",error});
     }
@@ -54,7 +54,7 @@ const deletePost = async(req,res) =>{
     try {
 
         const deleted = await post.findByIdAndDelete(req.params.id);
-        if(!deleted) return res.status(404).json({message:"post not found error"});
+        if(!deleted) return res.status(404).json({message:"post not found error",error});
 
         res.status(200).json({message:"post was deleted succesfully"})
     } catch (error) {
@@ -67,4 +67,4 @@ export {
     getPost,
     updatePost,
     deletePost
-}
+};
